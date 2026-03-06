@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaria Detection - Advanced AI Diagnosis System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-virus"></i> Malaria Detection AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#detector">Detector</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe"></i> Language
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="langDropdown">
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">العربية</a></li>
+                            <li><a class="dropdown-item" href="#">中文</a></li>
+                            <li><a class="dropdown-item" href="#">Français</a></li>
+                            <li><a class="dropdown-item" href="#">Русский</a></li>
+                            <li><a class="dropdown-item" href="#">Español</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Advanced Malaria Detection System</h1>
+            <p class="hero-subtitle">Using Artificial Intelligence to Detect Malaria Parasites</p>
+            <a href="#detector" class="btn btn-lg btn-detector">
+                <i class="fas fa-microscope"></i> Start Detection
+            </a>
+        </div>
+    </section>
+
+    <!-- Malaria Information Section -->
+    <section id="about" class="info-section py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1576091160550-112173f7f869?w=600&h=400&fit=crop" 
+                         alt="Malaria Research" class="img-fluid rounded-lg shadow-lg hover-image">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h2 class="section-title">What is Malaria?</h2>
+                    <p class="lead">Malaria is a life-threatening disease spread to humans by some types of mosquitoes. It is mostly found in tropical countries and is preventable and curable.</p>
+                    <p>The infection is caused by a parasite and does not spread from person to person. Symptoms can be mild or life-threatening, including fever, chills, headache, fatigue, confusion, seizures, and difficulty breathing.</p>
+                    <div class="alert alert-info alert-custom mt-4">
+                        <i class="fas fa-info-circle"></i> <strong>Did you know?</strong> Early diagnosis and treatment of malaria reduces disease, prevents deaths, and contributes to reducing transmission.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Facts -->
+    <section class="key-facts-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Key Facts (2024)</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="fact-card">
+                        <div class="fact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>282 Million Cases</h3>
+                        <p>Global malaria cases estimated in 2024, a 3% increase from 2023</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="fact-card">
+                        <div class="fact-icon">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <h3>610,000 Deaths</h3>
+                        <p>Estimated malaria deaths in 2024, up from 598,000 in 2023</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="fact-card">
+                        <div class="fact-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>75% Children Under 5</h3>
+                        <p>Account for about 75% of all malaria deaths in the WHO African Region</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="fact-card">
+                        <div class="fact-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <h3>95% in Africa</h3>
+                        <p>WHO African Region carries 95% of global malaria cases</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="fact-card">
+                        <div class="fact-icon">
+                            <i class="fas fa-mosquito"></i>
+                        </div>
+                        <h3>Primary Vector</h3>
+                        <p>Spread mainly through bites of infected female Anopheles mosquitoes</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="fact-card">
+                        <div class="fact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>10-15 Days</h3>
+                        <p>Symptoms usually appear within 10-15 days after mosquito bite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Symptoms Section -->
+    <section class="symptoms-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Symptoms & Risk</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Common Symptoms</h3>
+                    <ul class="symptom-list">
+                        <li><i class="fas fa-thermometer-half"></i> Fever</li>
+                        <li><i class="fas fa-head-side-virus"></i> Headache</li>
+                        <li><i class="fas fa-wind"></i> Chills</li>
+                        <li><i class="fas fa-tired"></i> Extreme Fatigue</li>
+                        <li><i class="fas fa-brain"></i> Impaired Consciousness</li>
+                        <li><i class="fas fa-lungs"></i> Difficulty Breathing</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">High-Risk Groups</h3>
+                    <ul class="symptom-list">
+                        <li><i class="fas fa-baby"></i> Infants & Children Under 5</li>
+                        <li><i class="fas fa-woman-pregnancy"></i> Pregnant Women</li>
+                        <li><i class="fas fa-plane"></i> Travellers</li>
+                        <li><i class="fas fa-shield-virus"></i> People with HIV/AIDS</li>
+                        <li><i class="fas fa-person-hiking"></i> Elderly Population</li>
+                        <li><i class="fas fa-wheelchair"></i> Immunocompromised Persons</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prevention Section -->
+    <section class="prevention-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Prevention Methods</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="prevention-card">
+                        <div class="prevention-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h4>Mosquito Nets</h4>
+                        <p>Use insecticide-treated mosquito nets when sleeping in malaria-risk areas</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="prevention-card">
+                        <div class="prevention-icon">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h4>Insect Repellents</h4>
+                        <p>Use DEET, IR3535, or Icaridin-based repellents after dusk</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="prevention-card">
+                        <div class="prevention-icon">
+                            <i class="fas fa-shirt"></i>
+                        </div>
+                        <h4>Protective Clothing</h4>
+                        <p>Wear long sleeves and pants, especially during evening hours</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="prevention-card">
+                        <div class="prevention-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h4>Chemoprophylaxis</h4>
+                        <p>Take preventive medications before traveling to endemic areas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detection Section -->
+    <section id="detector" class="detector-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">AI-Powered Malaria Detection</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="detector-card">
+                        <div class="detector-header">
+                            <i class="fas fa-microchip"></i>
+                            <h3>Upload Blood Smear Image</h3>
+                            <p>Our AI model analyzes cell images to detect malaria parasites</p>
+                        </div>
+                        
+                        <form action="/predict" method="post" enctype="multipart/form-data" class="detector-form">
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="fileInput" name="file" accept="image/*" required>
+                                <label for="fileInput" class="file-upload-label">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <span>Click to upload or drag and drop</span>
+                                    <small>PNG, JPG, GIF up to 10MB</small>
+                                </label>
+                            </div>
+                            <div id="filePreview" style="display: none;">
+                                <img id="previewImg" src="" alt="Preview">
+                                <button type="button" class="btn btn-sm btn-secondary" onclick="clearFile()">
+                                    <i class="fas fa-times"></i> Change File
+                                </button>
+                            </div>
+                            <button type="submit" class="btn btn-submit">
+                                <i class="fas fa-wand-magic-sparkles"></i> Analyze Image
+                            </button>
+                        </form>
+
+                        {% if prediction %}
+                        <div class="result-container">
+                            <div class="result-box {% if prediction == 'Parasitized' %}result-positive{% else %}result-negative{% endif %}">
+                                <div class="result-icon">
+                                    {% if prediction == 'Parasitized' %}
+                                    <i class="fas fa-virus"></i>
+                                    {% else %}
+                                    <i class="fas fa-shield-check"></i>
+                                    {% endif %}
+                                </div>
+                                <h3>{{ prediction }}</h3>
+                                <p class="result-confidence">Confidence: <strong>{{ confidence }}%</strong></p>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" style="width: {{ confidence }}%"></div>
+                                </div>
+                                {% if prediction == 'Parasitized' %}
+                                <p class="result-message">⚠️ Malaria parasites detected. Immediate medical consultation recommended.</p>
+                                {% else %}
+                                <p class="result-message">✓ No malaria parasites detected. Maintain preventive measures.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Section -->
+    <section class="treatment-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Treatment Guidelines</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="treatment-card">
+                        <h4><i class="fas fa-flask-vial"></i> Artemisinin-Based Therapy</h4>
+                        <p>Most effective treatment for P. falciparum malaria. Should be administered promptly upon diagnosis.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="treatment-card">
+                        <h4><i class="fas fa-capsules"></i> Chloroquine</h4>
+                        <p>Recommended for P. vivax treatment in areas where the parasite remains sensitive.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="treatment-card">
+                        <h4><i class="fas fa-syringe"></i> Supportive Care</h4>
+                        <p>Fluid management, fever control, and monitoring for severe complications.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="treatment-card">
+                        <h4><i class="fas fa-heart"></i> Emergency Response</h4>
+                        <p>Intensive care for severe malaria cases with organ complications.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-warning mt-5" style="border-left: 5px solid #ff6b6b;">
+                <strong>⚠️ Important:</strong> Early diagnosis and immediate treatment are crucial. WHO recommends confirming suspected malaria cases through parasite-based diagnostic testing.
+            </div>
+        </div>
+    </section>
+
+    <!-- Vaccine Section -->
+    <section class="vaccine-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Vaccination Programs</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">WHO-Recommended Vaccines</h3>
+                    <div class="vaccine-item">
+                        <h5><i class="fas fa-check-circle"></i> RTS,S/AS01 (Mosquirix)</h5>
+                        <p>Recommended since October 2021. Significantly reduces malaria in young African children.</p>
+                    </div>
+                    <div class="vaccine-item">
+                        <h5><i class="fas fa-check-circle"></i> R21/Matrix-M</h5>
+                        <p>Recommended since October 2023. Safe and effective malaria vaccine for routine immunization.</p>
+                    </div>
+                    <p class="mt-4"><strong>Expected Impact:</strong> These vaccines are projected to save tens of thousands of young lives annually when combined with other malaria interventions.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="vaccine-illustration">
+                        <i class="fas fa-vial"></i>
+                        <p>Advanced vaccine technology protecting millions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About This System</h5>
+                    <p>Advanced AI-powered malaria detection using deep learning algorithms trained on thousands of blood smear images.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Information</a></li>
+                        <li><a href="#detector">Detection Tool</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Disclaimer</h5>
+                    <p>This tool is for educational purposes. Always consult with medical professionals for diagnosis confirmation.</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2026 Malaria Detection AI System. Based on WHO Guidelines.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // File upload preview
+        const fileInput = document.getElementById('fileInput');
+        const filePreview = document.getElementById('filePreview');
+        const previewImg = document.getElementById('previewImg');
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    previewImg.src = event.target.result;
+                    filePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function clearFile() {
+            fileInput.value = '';
+            filePreview.style.display = 'none';
+        }
+
+        // Drag and drop
+        const uploadLabel = document.querySelector('.file-upload-label');
+        uploadLabel.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadLabel.classList.add('drag-over');
+        });
+        uploadLabel.addEventListener('dragleave', () => {
+            uploadLabel.classList.remove('drag-over');
+        });
+        uploadLabel.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadLabel.classList.remove('drag-over');
+            fileInput.files = e.dataTransfer.files;
+            const event = new Event('change', { bubbles: true });
+            fileInput.dispatchEvent(event);
+        });
+    </script>
+</body>
+</html>
