@@ -542,6 +542,11 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.file-upload-label.uploaded {
+    border-color: var(--success);
+    background: rgba(0, 255, 136, 0.12);
+}
+
 .file-upload-label::before {
     content: 'DRAG & DROP OR CLICK TO UPLOAD';
     position: absolute;

@@ -46,7 +46,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">Advanced Malaria Detection System</h1>
-            <p class="hero-subtitle">Using Artificial Intelligence to Detect Malaria Parasites</p>
+Using Deep Learning to Detect Malaria Parasites
             <a href="#detector" class="btn btn-lg btn-detector">
                 <i class="fas fa-microscope"></i> Start Detection
             </a>
@@ -225,7 +225,7 @@
                             <p>Our AI model analyzes cell images to detect malaria parasites</p>
                         </div>
                         
-                        <form action="/predict" method="post" enctype="multipart/form-data" class="detector-form" id="uploadForm">
+                        <form action="/predict#detector" method="post" enctype="multipart/form-data" class="detector-form" id="uploadForm">
                             <div class="file-upload-wrapper">
                                 <input type="file" id="fileInput" name="file" accept="image/*" required>
                                 <label for="fileInput" class="file-upload-label">
@@ -391,6 +391,7 @@
 
         fileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
+            const labelText = document.querySelector('.file-upload-label span');
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
@@ -398,6 +399,13 @@
                     filePreview.style.display = 'block';
                 };
                 reader.readAsDataURL(file);
+
+                labelText.textContent = 'Picture uploaded';
+                uploadLabel.classList.remove('drag-over');
+                uploadLabel.classList.add('uploaded');
+            } else {
+                labelText.textContent = 'Click to upload or drag and drop';
+                uploadLabel.classList.remove('uploaded');
             }
         });
 
@@ -473,13 +481,25 @@
         
         // Uncomment to enable matrix rain effect
         // createMatrixRain();
-    </script>
+
+        // Drop file on label
         uploadLabel.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadLabel.classList.remove('drag-over');
             fileInput.files = e.dataTransfer.files;
             const event = new Event('change', { bubbles: true });
             fileInput.dispatchEvent(event);
+        });
+
+        // If result exists, scroll to detector section on page load
+        window.addEventListener('load', function() {
+            const resultSection = document.querySelector('.result-container');
+            if (resultSection) {
+                const detectorSection = document.getElementById('detector');
+                if (detectorSection) {
+                    detectorSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
+            }
         });
     </script>
 </body>

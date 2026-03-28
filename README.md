@@ -1,4 +1,6 @@
-# Malaria Detection Using Deep Learning
+# Advanced Malaria Detection System
+#
+# Using Deep Learning to Detect Malaria Parasites
 
 ## Project Overview
 
