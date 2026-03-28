@@ -1,18 +1,20 @@
 /* ===== VARIABLES & THEME ===== */
 :root {
-    --primary: #6c5ce7;
-    --primary-dark: #5f3dc4;
-    --primary-light: #a29bfe;
-    --secondary: #0984e3;
-    --secondary-light: #74b9ff;
-    --success: #00b894;
-    --danger: #d63031;
-    --warning: #fdcb6e;
-    --dark: #2d3436;
-    --light: #f5f6fa;
+    --primary: #2c3e50;
+    --primary-dark: #1a252f;
+    --primary-light: #34495e;
+    --secondary: #3498db;
+    --secondary-light: #5dade2;
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
     --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --gray: #95a5a6;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --border: #e1e8ed;
 }
 
 * {
@@ -27,7 +29,7 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: var(--light);
     color: var(--dark);
     line-height: 1.6;
     min-height: 100vh;
@@ -35,27 +37,30 @@ body {
 
 /* ===== NAVBAR ===== */
 .navbar {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+    background: var(--white) !important;
     box-shadow: var(--shadow-sm);
     padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
 }
 
 .navbar-brand {
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 1px;
+    color: var(--primary) !important;
     transition: all 0.3s ease;
 }
 
 .navbar-brand:hover {
-    transform: scale(1.05);
-    color: var(--warning) !important;
+    color: var(--secondary) !important;
+    transform: scale(1.02);
 }
 
 .nav-link {
     position: relative;
     margin: 0 10px;
     font-weight: 500;
+    color: var(--dark) !important;
     transition: all 0.3s ease;
 }
 
@@ -65,8 +70,8 @@ body {
     bottom: -5px;
     left: 0;
     width: 0;
-    height: 3px;
-    background: var(--warning);
+    height: 2px;
+    background: var(--secondary);
     transition: width 0.3s ease;
 }
 
@@ -74,26 +79,31 @@ body {
     width: 100%;
 }
 
+.nav-link:hover {
+    color: var(--secondary) !important;
+}
+
 .dropdown-menu {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    border: none;
-    box-shadow: var(--shadow-sm);
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: 8px;
 }
 
 .dropdown-item {
-    color: var(--white);
+    color: var(--dark);
     transition: all 0.3s ease;
 }
 
 .dropdown-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(5px);
+    background: var(--light);
+    color: var(--secondary);
 }
 
 /* ===== HERO SECTION ===== */
 .hero-section {
     position: relative;
-    height: 90vh;
+    height: 80vh;
     background: url('https://images.unsplash.com/photo-1576091160550-112173f7f869?w=1200&h=900&fit=crop') center/cover;
     display: flex;
     align-items: center;
@@ -108,7 +118,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.7) 0%, rgba(9, 132, 227, 0.7) 100%);
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.85) 0%, rgba(52, 73, 94, 0.85) 100%);
     z-index: 1;
 }
 
@@ -120,26 +130,27 @@ body {
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: 3rem;
+    font-weight: 700;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 40px;
     opacity: 0.95;
+    font-weight: 400;
 }
 
 .btn-detector {
-    background: linear-gradient(135deg, var(--warning) 0%, #fdcb6e 100%);
-    color: var(--dark);
-    border: none;
+    background: var(--secondary);
+    color: var(--white);
+    border: 2px solid var(--secondary);
     padding: 15px 50px;
-    font-weight: 700;
-    border-radius: 50px;
+    font-weight: 600;
+    border-radius: 8px;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-sm);
     text-decoration: none;
@@ -147,51 +158,60 @@ body {
 }
 
 .btn-detector:hover {
-    transform: translateY(-5px);
+    background: var(--white);
+    color: var(--secondary);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
     box-shadow: var(--shadow);
-    background: linear-gradient(135deg, #fdcb6e 0%, var(--warning) 100%);
-    color: var(--dark);
 }
 
 /* ===== SECTIONS ===== */
 .info-section {
     background: var(--white);
+    padding: 80px 0;
 }
 
 .key-facts-section {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    background: var(--light);
+    padding: 80px 0;
 }
 
 .symptoms-section {
     background: var(--white);
+    padding: 80px 0;
 }
 
 .prevention-section {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    background: var(--light);
+    padding: 80px 0;
 }
 
 .detector-section {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: var(--primary);
     color: var(--white);
+    padding: 80px 0;
 }
 
 .treatment-section {
     background: var(--white);
+    padding: 80px 0;
 }
 
 .vaccine-section {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    background: var(--light);
+    padding: 80px 0;
 }
 
 .footer-section {
-    background: linear-gradient(135deg, var(--dark) 0%, #2f3542 100%);
+    background: var(--primary);
     color: var(--white);
+    padding: 60px 0 30px;
 }
 
 /* ===== SECTION TITLES ===== */
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: var(--primary);
     margin-bottom: 30px;
     position: relative;
@@ -206,10 +226,10 @@ body {
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 5px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    border-radius: 5px;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
 }
 
 .detector-section .section-title {
@@ -217,43 +237,44 @@ body {
 }
 
 .detector-section .section-title::after {
-    background: linear-gradient(135deg, var(--warning) 0%, #fdcb6e 100%);
+    background: var(--white);
 }
 
 /* ===== FACT CARDS ===== */
 .fact-card {
     background: var(--white);
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    border: 1px solid var(--border);
     height: 100%;
 }
 
 .fact-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow);
-    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: var(--secondary);
 }
 
 .fact-icon {
-    font-size: 3rem;
-    color: var(--primary);
+    font-size: 2.5rem;
+    color: var(--secondary);
     margin-bottom: 15px;
 }
 
 .fact-card h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+    font-weight: 600;
     margin-bottom: 10px;
-    color: var(--dark);
+    color: var(--primary);
 }
 
 .fact-card p {
-    color: #636e72;
+    color: var(--gray);
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* ===== SYMPTOM LIST ===== */
@@ -263,70 +284,72 @@ body {
 }
 
 .symptom-list li {
-    padding: 15px;
-    margin-bottom: 10px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-    border-left: 5px solid var(--primary);
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    background: var(--white);
+    border-left: 4px solid var(--secondary);
     border-radius: 8px;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     font-weight: 500;
+    box-shadow: var(--shadow-sm);
 }
 
 .symptom-list li:hover {
-    transform: translateX(10px);
-    box-shadow: var(--shadow-sm);
-    border-left-color: var(--secondary);
+    transform: translateX(5px);
+    box-shadow: var(--shadow);
+    border-left-color: var(--primary);
 }
 
 .symptom-list i {
     margin-right: 15px;
-    color: var(--primary);
-    font-size: 1.3rem;
+    color: var(--secondary);
+    font-size: 1.2rem;
 }
 
 /* ===== PREVENTION CARDS ===== */
 .prevention-card {
     background: var(--white);
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
-    border: 3px solid transparent;
+    border: 1px solid var(--border);
 }
 
 .prevention-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     border-color: var(--secondary);
 }
 
 .prevention-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--secondary);
     margin-bottom: 15px;
-    animation: bounce 2s infinite;
 }
 
 .prevention-card h4 {
-    font-weight: 700;
-    color: var(--dark);
+    font-weight: 600;
+    color: var(--primary);
     margin-bottom: 10px;
 }
 
 .prevention-card p {
-    color: #636e72;
+    color: var(--gray);
+    line-height: 1.5;
 }
 
 /* ===== DETECTOR CARD ===== */
 .detector-card {
     background: var(--white);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 50px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     color: var(--dark);
+    border: 1px solid var(--border);
 }
 
 .detector-header {
@@ -335,20 +358,21 @@ body {
 }
 
 .detector-header i {
-    font-size: 3rem;
-    color: var(--primary);
+    font-size: 2.5rem;
+    color: var(--secondary);
     margin-bottom: 15px;
 }
 
 .detector-header h3 {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 600;
     margin-bottom: 10px;
+    color: var(--primary);
 }
 
 .detector-header p {
-    color: #636e72;
-    font-size: 1.1rem;
+    color: var(--gray);
+    font-size: 1rem;
 }
 
 /* ===== FILE UPLOAD ===== */
@@ -366,10 +390,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 50px;
-    border: 3px dashed var(--primary);
-    border-radius: 15px;
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(9, 132, 227, 0.05) 100%);
+    padding: 40px;
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    background: var(--light);
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -377,32 +401,30 @@ body {
 
 .file-upload-label:hover {
     border-color: var(--secondary);
-    background: linear-gradient(135deg, rgba(9, 132, 227, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
-    transform: scale(1.02);
+    background: rgba(52, 152, 219, 0.05);
 }
 
 .file-upload-label.drag-over {
     border-color: var(--secondary);
-    background: linear-gradient(135deg, rgba(9, 132, 227, 0.15) 0%, rgba(108, 92, 231, 0.15) 100%);
-    transform: scale(1.05);
+    background: rgba(52, 152, 219, 0.1);
 }
 
 .file-upload-label i {
-    font-size: 3rem;
-    color: var(--primary);
+    font-size: 2.5rem;
+    color: var(--secondary);
     margin-bottom: 15px;
 }
 
 .file-upload-label span {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--dark);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary);
     margin-bottom: 5px;
 }
 
 .file-upload-label small {
-    color: #636e72;
-    font-size: 0.9rem;
+    color: var(--gray);
+    font-size: 0.85rem;
 }
 
 #filePreview {
@@ -422,21 +444,22 @@ body {
 .btn-submit {
     width: 100%;
     padding: 15px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--secondary);
+    border: 2px solid var(--secondary);
     color: var(--white);
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-sm);
 }
 
 .btn-submit:hover {
-    transform: translateY(-3px);
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
     box-shadow: var(--shadow);
-    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
     color: var(--white);
 }
 
@@ -451,43 +474,42 @@ body {
 }
 
 .result-box {
-    padding: 40px;
-    border-radius: 15px;
+    padding: 30px;
+    border-radius: 12px;
     text-align: center;
     color: var(--white);
     box-shadow: var(--shadow);
 }
 
 .result-positive {
-    background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+    background: var(--danger);
 }
 
 .result-negative {
-    background: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
+    background: var(--success);
 }
 
 .result-icon {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 20px;
-    animation: pulse 2s infinite;
 }
 
 .result-box h3 {
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: 600;
     margin-bottom: 15px;
 }
 
 .result-confidence {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-bottom: 15px;
 }
 
 .confidence-bar {
     width: 100%;
-    height: 20px;
+    height: 15px;
     background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -495,35 +517,35 @@ body {
 .confidence-fill {
     height: 100%;
     background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+    border-radius: 8px;
     transition: width 1s ease;
 }
 
 .result-message {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-top: 20px;
     line-height: 1.5;
 }
 
 /* ===== TREATMENT CARDS ===== */
 .treatment-card {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: var(--secondary);
     color: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: var(--shadow-sm);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
 
 .treatment-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .treatment-card h4 {
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 15px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .treatment-card i {
@@ -536,54 +558,55 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
-    border-left: 5px solid var(--primary);
+    border-left: 4px solid var(--secondary);
     transition: all 0.3s ease;
-}
-
-.vaccine-item:hover {
-    transform: translateX(10px);
     box-shadow: var(--shadow-sm);
 }
 
+.vaccine-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow);
+}
+
 .vaccine-item h5 {
-    color: var(--primary);
-    font-weight: 700;
+    color: var(--secondary);
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
 .vaccine-item p {
-    color: #636e72;
+    color: var(--gray);
 }
 
 .vaccine-illustration {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: var(--secondary);
     color: var(--white);
-    padding: 50px;
-    border-radius: 15px;
+    padding: 40px;
+    border-radius: 12px;
     text-align: center;
     box-shadow: var(--shadow);
 }
 
 .vaccine-illustration i {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 20px;
 }
 
 .vaccine-illustration p {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 /* ===== ALERT CUSTOM ===== */
 .alert-custom {
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(9, 132, 227, 0.1) 100%);
-    border-left: 5px solid var(--primary);
+    background: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid var(--secondary);
     border: none;
     color: var(--dark);
 }
 
 .alert-custom i {
-    color: var(--primary);
+    color: var(--secondary);
     margin-right: 10px;
 }
 
@@ -597,6 +620,7 @@ body {
     filter: brightness(1.1);
 }
 
+/* ===== FOOTER ===== */
 /* ===== FOOTER ===== */
 .footer-links {
     list-style: none;
@@ -615,12 +639,12 @@ body {
 }
 
 .footer-links a:hover {
-    color: var(--warning);
-    transform: translateX(10px);
+    color: var(--secondary);
+    transform: translateX(5px);
 }
 
 .footer-section h5 {
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
