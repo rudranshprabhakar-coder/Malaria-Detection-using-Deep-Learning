@@ -225,7 +225,7 @@
                             <p>Our AI model analyzes cell images to detect malaria parasites</p>
                         </div>
                         
-                        <form action="/predict" method="post" enctype="multipart/form-data" class="detector-form">
+                        <form action="/predict" method="post" enctype="multipart/form-data" class="detector-form" id="uploadForm">
                             <div class="file-upload-wrapper">
                                 <input type="file" id="fileInput" name="file" accept="image/*" required>
                                 <label for="fileInput" class="file-upload-label">
@@ -240,7 +240,21 @@
                                     <i class="fas fa-times"></i> Change File
                                 </button>
                             </div>
-                            <button type="submit" class="btn btn-submit">
+                            
+                            <!-- Loading Animation -->
+                            <div id="loading" style="display: none;" class="loading-container">
+                                <div class="loading-spinner">
+                                    <div class="spinner-ring"></div>
+                                    <div class="spinner-ring"></div>
+                                    <div class="spinner-ring"></div>
+                                </div>
+                                <div class="loading-text">
+                                    <span class="typing-text">Analyzing image with AI...</span>
+                                    <span class="cursor">|</span>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-submit" id="submitBtn">
                                 <i class="fas fa-wand-magic-sparkles"></i> Analyze Image
                             </button>
                         </form>
@@ -371,6 +385,9 @@
         const fileInput = document.getElementById('fileInput');
         const filePreview = document.getElementById('filePreview');
         const previewImg = document.getElementById('previewImg');
+        const uploadForm = document.getElementById('uploadForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loading = document.getElementById('loading');
 
         fileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -398,6 +415,65 @@
         uploadLabel.addEventListener('dragleave', () => {
             uploadLabel.classList.remove('drag-over');
         });
+
+        // Form submission with loading
+        uploadForm.addEventListener('submit', function(e) {
+            submitBtn.style.display = 'none';
+            loading.style.display = 'block';
+            
+            // Add some delay for visual effect
+            setTimeout(() => {
+                // Form will submit after this
+            }, 500);
+        });
+
+        // Matrix rain effect (optional tech background)
+        function createMatrixRain() {
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.05';
+            document.body.appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const matrix = "01";
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+            
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = var(--secondary);
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = matrix[Math.floor(Math.random() * matrix.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 35);
+        }
+        
+        // Uncomment to enable matrix rain effect
+        // createMatrixRain();
+    </script>
         uploadLabel.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadLabel.classList.remove('drag-over');
