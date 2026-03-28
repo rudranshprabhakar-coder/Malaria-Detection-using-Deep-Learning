@@ -8,3 +8,4 @@ pillow
 flask
 opencv-python
 joblib
+gunicorn
