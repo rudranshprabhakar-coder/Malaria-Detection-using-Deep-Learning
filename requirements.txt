@@ -6,6 +6,6 @@ scipy
 scikit-learn
 pillow
 flask
-opencv-python
+opencv-python-headless
 joblib
 gunicorn
